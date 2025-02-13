@@ -1,0 +1,11 @@
+# Bb_api credentials.
+##   Fill in your own details below, and then save/rename file as:
+##      'Bb_api-creds.sh'
+
+## My Application Keys
+KEY="YOUR-APP-KEY-GOES-HERE"
+SECRET="YOUR_OWN_SPECIAL_SECRET_GOES_HERE"
+
+## My URLS where these creds are valid
+URL="https://YOUR.BB_URL.com"
+TESTURL="https://YOUR.TEST_SERVER.com"
