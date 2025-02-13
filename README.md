@@ -9,12 +9,37 @@ How to get started with Blackboard API:
     
 The Bb Api reference:
    https://developer.anthology.com/portal/displayApi
-   
-Requirements: 
+
+You must set up Bb REST-API Access before using.
+
+Each directory has it's own README file for specific directions
+
+Linux Scripts
+====================================
+the "bash" directory contains a collection of BASH scripts.  These are 
+the scripts I use most often, and most are 'non-damaging' - ie. they 
+either get info, or make a change that can be very easily undone (such
+as make a user 'unavailable'
+
+Requirements for the Linux Scripts: 
   - Bb REST-API access
   - All scripts are writing in bash (Linux command line)
 		  Must have `curl` and `jq` installed
   - Put your own credentials and URLs in the Bb_api-creds.example and
       rename to "Bb_api-creds.sh"
-    
+
+PHP Scripts
+====================================
+The "php" directory contains a collection of PHP based scripts. These
+are still run from the command line.  These are the scripts that can 
+be a bit more 'damaging" and/or are major batch action style jobs.
+
+Requirements for the PHP Scripts:
+   - TODO
+   - (PHP, PHP_Curl libary, ??? )
+   - modify the assets/config.example.php file 
+
+PowerShell Scripts
+====================================
+Currently don't have any, but creating the folder as a placeholder for now.
 
