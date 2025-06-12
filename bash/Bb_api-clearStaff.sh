@@ -8,7 +8,8 @@ source Bb_api-resource.sh
 
 # =====================================================================
 #  Define some output variables
-#     Setting all three to "FALSE" should result in nothing on screen
+#     Setting QUIET to TRUE and the other two to FALSE should result in nothing on screen
+#
 #     Each is independent of other - so setting DEBUG to true does not necessary set VERBOSE to true
 #  QUIET = send curls normal output to /dev/null
 #  VERBOSE = assorted notes and visual feedback that the script is running
