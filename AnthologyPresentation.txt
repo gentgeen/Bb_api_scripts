@@ -1,0 +1,10 @@
+The intial push for this GITHUB repository was the presentation I put 
+together for the "2025 Anthology Together Conference". 
+
+That presentation is available here:
+https://docs.google.com/presentation/d/1LMs_kRugKtMtfHraja7f8_sXD49mTovDUj7WBjUqfFI/edit?usp=sharing
+
+
+I did make extensive use of the "Speaker Notes" so you may want to
+review the slides in a manner that allows you to see the notes
+as well.
