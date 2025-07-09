@@ -26,32 +26,29 @@
 function callAPI($method, $url, $token, $data){
    $curl = curl_init();
    switch ($method){
+      case "GET":
+         curl_setopt($curl,CURLOPT_CUSTOMREQUEST, "GET");
+         break;
       case "POST":
          curl_setopt($curl, CURLOPT_POST, 1);
-         if ($data)
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
          break;
       case "PUT":
          curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
-         if ($data)
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
          break;
       case "PATCH":
          curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PATCH");
-         if ($data)
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
          break;
       case "DELETE":
          curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
-         if ($data)
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
          break;
-
 
       default:
          if ($data)
             $url = sprintf("%s?%s", $url, http_build_query($data));
    }
+
+   if ($data) { curl_setopt($curl, CURLOPT_POSTFIELDS, $data); }
+
    // OPTIONS:
    curl_setopt($curl, CURLOPT_URL, $url);
    curl_setopt($curl, CURLINFO_HEADER_OUT, true);
@@ -84,16 +81,16 @@ function callAPI($method, $url, $token, $data){
 // -------------------------------------------------------------------
 
 function checkResponse($income) {
-	// When I run "delete" the income array was NULL
 	if (is_null($income)) {
+		print "Returning JSON data is null";
 		return;
 	}
 	// now check for the normal 'error' messages. 
 	if (array_key_exists('error',$income)) {
 		die ('ERROR 001: ' . $income['error_description'] . PHP_EOL );
 	} elseif ( array_key_exists('status',$income) && $income['status'] >= '400' )  {
-		// die ('ERROR 002: '.$income['message'] . PHP_EOL);
-		print 'ERROR 002: '.$income['message'] . PHP_EOL;
+		die ('ERROR 002: '.$income['message'] . PHP_EOL);
+		// print 'ERROR 002: '.$income['message'] . PHP_EOL;
 	}
 	return;
 }
