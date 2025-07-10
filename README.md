@@ -57,18 +57,22 @@ Before using, you will need to edit the assets/config.example.php file.
    - Review the COMMON VARIABLES section to adjust for your own needs
    - save file as "config.php"  
 
-Three of the scripts are specifically designed and included to 
-illustrate the process.  I did not user functions, or lots of options 
-for their usage. They should be easy enough to read for novices to get 
-an idea and (hopefully) allow you to come up with your own scripts 
-based on your own schools needs.
-  - DeleteCourses.php -- takes a CSV as input, sends the "DELETE" option 
-      the the API
-  - FixLang.php -- Creates the necessary JSON file to send along with 
-      the API call.  It sends the "PATCH" command to update a user 
-      record.
+Some of the scripts are specifically designed and included to 
+illustrate the process.  I did my best to keep the code simple, a
+provide a lot of notes/comments.  They should be easy enough to read 
+for novices to get an idea and (hopefully) allow you to come up with 
+your own scripts based on your own schools needs.
+  - FixLang.php -- Takes a username as input, creates the necessary JSON 
+      file to send along with the API call. 
+      - Sends the "PATCH" command to update a user record.
   - UserInfo.php -- Takes a username as input, and returns the user's
-      JSON info file as a PHP array.  
+      JSON info file as a PHP array.
+      - Sends the "GET" command option
+  - ListCourses.php -- example of how to work with paging data return, 
+      and can create a CSV file of course IDs
+      - Sends the "GET" command option, with multiple result return
+  - DeleteCourses.php -- Takes a CSV as input
+      - Sends the "DELETE" option 
 
 ------------------------------------
 POWERSHELL
