@@ -8,16 +8,15 @@ source Bb_api-resource.sh
 
 # =====================================================================
 #  Define some output variables
-#     Setting QUIET to TRUE and the other two to FALSE should result in nothing on screen
-#
+#     Setting all three to "FALSE" should result in nothing on screen
 #     Each is independent of other - so setting DEBUG to true does not necessary set VERBOSE to true
 #  QUIET = send curls normal output to /dev/null
 #  VERBOSE = assorted notes and visual feedback that the script is running
 #  DEBUG = creates /tmp/bb_api_xxxx files for review 
 ## ------------------------------------------------------------------
-VERBOSE="FALSE"
+VERBOSE="TRUE"
 DEBUG="FALSE"
-# setting this script to quiet really doesn't make sense, so left at FALSE
+# setting this script to quiet really doesn't make sense, so usually left at FALSE
 QUIET="FALSE"
 
 # =====================================================================
@@ -32,7 +31,7 @@ FILTER='.'
 # =====================================================================
 function usage_short() {
 	echo ""
-	echo "	$0 -t -o [user|primary|course|external] -s [userName|User PrimaryID|CourseID|Course ExternalID]"
+	echo "	$0 -t -o [user|primary|sid|course|external] -s [userName|User PrimaryID|User StudentID|CourseID|Course ExternalID]"
 	echo "	use -h for full help"
 	echo ""
 }
@@ -43,6 +42,7 @@ function usage() {
 	echo "      '-o user' when searching for user information with BB Username "
 	echo "      '-o primary' when searching for user information using  "
 	echo "                   the primary ID (ex: _##_# ) "
+	echo "      '-o sid' when search for user information using Student ID "
 	echo "      '-o course' when using Blackboard Course [or org] ID"
 	echo "      '-o external' when using Blackboard Course [or org] external ID"
 	echo "      '-o any' allows for any URL string from the API via the -s option"
@@ -100,6 +100,9 @@ elif [[ $OPER == "primary" ]]; then
 	PRIMARY=$STRING
 	PATH=learn/api/public/v1/users/$PRIMARY
 
+elif [[ $OPER == "sid" ]]; then
+	SID=$STRING
+	PATH=learn/api/public/v1/users/studentId:$SID
 
 ## V1 endpoint deprecated - use v2 for version 3400.8.0 and greater
 elif [[ $OPER == "course" ]]; then
