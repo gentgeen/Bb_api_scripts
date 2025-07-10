@@ -37,12 +37,12 @@ as make a user 'unavailable')
 Requirements for the Linux Scripts: 
   - Bb REST-API access
   - All scripts are writing in bash (Linux command line)
-		  Must have `curl` and `jq` installed
+      Must have `curl` and `jq` installed
   - Put your own credentials and URLs in the Bb_api-creds.example and
       rename to "Bb_api-creds.sh"
   - Review the "Bb_api-resource.sh" file, in particular the regex 
       for "USER_CHECK_STRING"
-	(If you need some help testing your regex:  https://regex101.com/  )
+      (If you need some help testing your regex: https://regex101.com/ )
 
 ------------------------------------
 PHP
@@ -53,22 +53,22 @@ more 'damaging" and/or are major batch action style jobs (such as
 running through loops, logic checks for processing, etc)
 
 Before using, you will need to edit the assets/config.example.php file.
-	-- put in your own URL, Key and Secret in the CONSTANTS section
-	-- Review the COMMON VARIABLES section to adjust for your own needs
-	-- save file as "config.php"  
+   - put in your own URL, Key and Secret in the CONSTANTS section
+   - Review the COMMON VARIABLES section to adjust for your own needs
+   - save file as "config.php"  
 
 Three of the scripts are specifically designed and included to 
 illustrate the process.  I did not user functions, or lots of options 
 for their usage. They should be easy enough to read for novices to get 
 an idea and (hopefully) allow you to come up with your own scripts 
 based on your own schools needs.
-	DeleteCourses.php -- takes a CSV as input, sends the "DELETE" option 
-		the the API
-	FixLang.php -- Creates the neccessary JSON file to send along with 
-		the API call.  It sends the "PATCH" command to update a user 
-		record.
-	UserInfo.php -- Takes a username as input, and returns the user's
-		JSON info file as a PHP array.  
+  - DeleteCourses.php -- takes a CSV as input, sends the "DELETE" option 
+      the the API
+  - FixLang.php -- Creates the necessary JSON file to send along with 
+      the API call.  It sends the "PATCH" command to update a user 
+      record.
+  - UserInfo.php -- Takes a username as input, and returns the user's
+      JSON info file as a PHP array.  
 
 ------------------------------------
 POWERSHELL
