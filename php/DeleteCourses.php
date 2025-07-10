@@ -5,8 +5,10 @@
  * 
  *   usage:  DeleteCourses.php CSVFILE 
  * 
- *    Take a 1 column CSV file of BB course ID and delete them
+ *    Take a CSV file with BB course ID in column one, and delete them
  * 
+ *       ListCourses.php is designed to create the necessary output
+ *  
  *  ===================================================================
  * Copyright 2025 Kevin Squire <gentgeen@wikiak.org>
  * 
@@ -58,14 +60,23 @@ if ( isset($argv[1]) ) {
 
 $my_token=GetToken();
 
-// Read the contents of the CSV file, and put into array. 
-// flags : Ignore the newline/line break and skip any blank/empty lines
-$courseList=file($inFile,FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );
+// open the CSV file
+if (( $file = fopen($inFile,'r')) !== FALSE) {
+	// We were able to open the incoming file
+	while (($line = fgetcsv($file)) !== FALSE) {
+		// $line is an array of the csv elements along the row
+		// $line[0] is the first item in that row
+		$courseID = $line[0];	// This reassigning of the variable is really unnecessary, just makes next few lines easier to read for humans
 
-foreach ($courseList as $courseID) {
-	print "Deleting ".$courseID." ... ". PHP_EOL;
-	$url = BaseURL."/learn/api/public/v3/courses/courseId:".$courseID;
-	$c = callAPI('DELETE',$url,$my_token,'' );
- }
+		print "Deleting ".$courseID." ... ". PHP_EOL;
+		$url = BaseURL."/learn/api/public/v3/courses/courseId:".$courseID;
+		$c = callAPI('DELETE',$url,$my_token,'' );
+	}
+	fclose($file);
+
+} else {
+	// opening the incoming file failed somehow
+	print "ERROR: Could not open file ". $inFile . PHP_EOL;
+}
 
 ?>
