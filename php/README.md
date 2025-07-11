@@ -22,3 +22,7 @@ The list of modules I have installed:
 	ctype, curl, exif, FFI, fileinfo, ftp, gettext, iconv, Phar, posix, 
 	readline, shmop, sockets, sysvmsg, sysvsem, sysvshm, tokenizer, 
 	Zend OPcache
+
+UPDATE: I just had a machine that did not have PHP installed. Installing
+two Debian packages took care of everything for me:
+		apt-get install php php-curl
