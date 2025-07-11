@@ -58,13 +58,16 @@ Before using, you will need to edit the assets/config.example.php file.
    - save file as "config.php"  
 
 Some of the scripts are specifically designed and included to 
-illustrate the process.  I did my best to keep the code simple, a
+illustrate the process.  I did my best to keep the code simple, and
 provide a lot of notes/comments.  They should be easy enough to read 
 for novices to get an idea and (hopefully) allow you to come up with 
-your own scripts based on your own schools needs.
+your own scripts based on your own needs.
   - FixLang.php -- Takes a username as input, creates the necessary JSON 
       file to send along with the API call. 
       - Sends the "PATCH" command to update a user record.
+  - MakeAnnounce.php -- Takes a course ID as input, and creates the
+      necessary JSON file to send along with the API call.
+      - Sends the "POST" command to create a new course announcement.
   - UserInfo.php -- Takes a username as input, and returns the user's
       JSON info file as a PHP array.
       - Sends the "GET" command option
